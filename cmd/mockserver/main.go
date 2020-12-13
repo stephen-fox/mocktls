@@ -100,7 +100,18 @@ func main() {
 			continue
 		}
 
-		log.Printf("[%s] connected successfully", c.RemoteAddr())
+		switch asserted := c.(type) {
+		case *tls.Conn:
+			err = asserted.Handshake()
+			if err != nil {
+				log.Printf("[%s] tls handshake failed - %s", c.RemoteAddr(), err)
+			} else {
+				log.Printf("[%s] tls handshake successful", c.RemoteAddr())
+			}
+		default:
+			log.Printf("connection is not of type *tls.Conn")
+		}
+
 		c.Close()
 	}
 }
