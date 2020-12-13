@@ -39,3 +39,12 @@ details about certificate chain file structure:
 ```sh
 go run cmd/mockserver/main.go -k /path/to/key.pem -c /path/to/certchain.pem
 ```
+
+## Certificate chain versus a single certificate
+For the purposes of this project, a "certificate chain" refers to a list of
+certificates. This term is commonly used by many TLS implementations. If you
+are using a single certificate, then it is still considered a "chain", and can
+be used in place of the chain. The term is a bit of a misnomer because
+certificate signing is more complicated than A signs B which signs C. For more
+information on the subject, refer to [Ryan Sleevi's blog post](https://medium.com/@sleevi_/path-building-vs-path-verifying-the-chain-of-pain-9fbab861d7d6)
+on the subject.
