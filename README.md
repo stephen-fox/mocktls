@@ -13,10 +13,10 @@ By default, a private key and certificate chain will be generated in memory.
 #### Using an existing private key and certificate chain from stdin
 An existing private key and certificate chain can be provided via standard
 input. A general example of this feature can be pasting a private key and
-certificate chain into the program. Once the data has been pasted, simply send
-a `SIGINT` with Control+D (or Control+C on Windows). Please refer to
-https://pkg.go.dev/crypto/tls#LoadX509KeyPair for details about certificate
-chain structure:
+certificate chain into the program. Once the data has been pasted, simply close
+stdin with Control+D (Control+C on Windows because I was not sure what else
+to do). Please refer to https://pkg.go.dev/crypto/tls#LoadX509KeyPair for
+details about certificate chain structure. Here is an example:
 
 ```sh
 go run cmd/mockserver/main.go -i
